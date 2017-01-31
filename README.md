@@ -10,7 +10,20 @@ $ npm install mongo-logger
 
 ```js
 var MongoLogger = require('mongo-logger');
-var log = MongoLogger(db);
+```
+
+The MongoLogger constructor takes a valid monk collection, for instance:
+
+```js
+monk = require('monk');
+db = monk('http://url.here/');
+db.get('logs');
+```
+
+Then you can instantiate a new MongoLogger instance:
+
+```js
+var log = new MongoLogger(db);
 
 log.error('SOMETHING HAS GONE HORRIBLY WRONG!')
 ```
