@@ -15,6 +15,9 @@ class MongoLog {
 
     if (typeof log === 'object') {
       Object.keys(log).forEach(key => {
+        if (key === 'db' || key === 'level') {
+          throw new TypeError(`Invalid key: ${key}`);
+        }
         this[key] = log[key];
       })
     } else {
