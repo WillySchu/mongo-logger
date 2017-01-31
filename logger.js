@@ -69,6 +69,56 @@ class MongoLogger {
       this.l(val, DEBUG)
     }
   }
+
+  /**
+   * Logs to mongo if logger level is at or above info
+   * @param String or Object value(s) to be logged
+   */
+  info(val) {
+    if (this.level >= INFO) {
+      this.l(val, INFO)
+    }
+  }
+
+  /**
+   * Logs to mongo if logger level is at or above warn
+   * @param String or Object value(s) to be logged
+   */
+  warn(val) {
+    if (this.level >= WARN) {
+      this.l(val, WARN)
+    }
+  }
+
+  /**
+   * Logs to mongo if logger level is at or above warn
+   * @param String or Object value(s) to be logged
+   */
+  warn(val) {
+    if (this.level >= WARN) {
+      this.l(val, WARN)
+    }
+  }
+
+  /**
+   * Logs to mongo if logger level is at or above error
+   * @param String or Object value(s) to be logged
+   */
+  error(val) {
+    if (this.level >= ERROR) {
+      this.l(val, ERROR)
+    }
+  }
+
+  /**
+   * Logs to mongo if logger level is at or above fatal
+   * @param String or Object value(s) to be logged
+   */
+  fatal(val) {
+    if (this.level >= FATAL) {
+      this.l(val, FATAL)
+    }
+  }
 }
 
 module.exports = MongoLogger;
