@@ -10,7 +10,7 @@ $ npm install mongo-logger
 
 ```js
 var MongoLogger = require('mongo-logger');
-var log = MongoLogger('db');
+var log = MongoLogger(db);
 
 log.error('SOMETHING HAS GONE HORRIBLY WRONG!')
 ```
