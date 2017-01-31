@@ -21,4 +21,19 @@ describe('MongoLogger', () => {
       expect(ml2.level).to.deep.equal(30);
     })
   })
+
+  describe('letLevel method', () => {
+    it('will throw an error if the wrong argument is passed', () => {
+      ml = new MongoLogger({});
+      expect(() => {ml.setLevel()}).to.throw(TypeError);
+      expect(() => {ml.setLevel('asdf')}).to.throw(TypeError);
+    })
+
+    it('will change the level', () => {
+      ml = new MongoLogger({});
+      expect(ml.level).to.equal(30);
+      ml.setLevel(50);
+      expect(ml.level).to.equal(50);
+    })
+  })
 })
