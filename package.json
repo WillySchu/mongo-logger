@@ -1,6 +1,6 @@
 {
   "name": "mongo-logger",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "A tool for saving logs in mongo",
   "main": "logger.js",
   "scripts": {
