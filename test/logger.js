@@ -22,7 +22,7 @@ describe('MongoLogger', () => {
     })
   })
 
-  describe('letLevel method', () => {
+  describe('setLevel method', () => {
     it('will throw an error if the wrong argument is passed', () => {
       ml = new MongoLogger({});
       expect(() => {ml.setLevel()}).to.throw(TypeError);
