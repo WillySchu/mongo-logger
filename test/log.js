@@ -31,6 +31,7 @@ describe('MongoLog', () => {
       expect(() => {new MongoLog({}, {db: 'hello'})}).to.throw(TypeError);
     })
   })
+
   describe('saving', () => {
     it('will correctly call the db.insert function on save', (done) => {
       db = {};
@@ -45,6 +46,16 @@ describe('MongoLog', () => {
       }
       ml = new MongoLog(db, 'hello');
       ml.save().finally(done);
+    })
+  })
+
+  describe('getObj method', () => {
+    it('will return the correct object', () => {
+      ml = new MongoLog({}, 'hello');
+      const obj = ml.getObj();
+      expect(obj.level).to.equal(1);
+      expect(obj.message).to.equal('hello');
+      expect(obj.db).to.equal(undefined);
     })
   })
 })
