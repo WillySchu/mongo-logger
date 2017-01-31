@@ -3,9 +3,9 @@
 > A node logging package to write logs to MongoDB
 
 ## Install
-
-  $ npm install mongo-logger
-
+```
+$ npm install mongo-logger
+```
 ## Documentation
 
 ```js
