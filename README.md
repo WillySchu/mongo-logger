@@ -1,7 +1,8 @@
 # mongo-logger
 
 > A node logging package to write logs to MongoDB
-[![Build Status](https://travis-ci.org/metricstory/mongo-logger.svg?branch=master)](https://travis-ci.org/metricstory/mongo-logger)
+
+> [![Build Status](https://travis-ci.org/metricstory/mongo-logger.svg?branch=master)](https://travis-ci.org/metricstory/mongo-logger)
 
 ## Install
 ```
