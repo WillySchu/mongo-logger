@@ -40,3 +40,5 @@ log.error('SOMETHING HAS GONE HORRIBLY WRONG!');
 ```
 
 ### Advanced
+
+The MongoLogger object has a level property that can be changed to control which logs are saved to mongo. By default this is set to all.

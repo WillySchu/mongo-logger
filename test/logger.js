@@ -29,8 +29,7 @@ describe('MongoLogger', () => {
     it('will throw an error if the wrong argument is passed', () => {
       const ml = new MongoLogger(monk, 's');
       expect(() => {ml.setLevel()}).to.throw(TypeError);
-      expect(() => {ml.setLevel(monk)}).to.throw(TypeError);
-      expect(() => {ml.setLevel(monk, false)}).to.throw(TypeError);
+      expect(() => {ml.setLevel('hello')}).to.throw(TypeError);
     })
 
     it('will change the level', () => {
@@ -38,6 +37,8 @@ describe('MongoLogger', () => {
       expect(ml.level).to.equal(Infinity);
       ml.setLevel(50);
       expect(ml.level).to.equal(50);
+      ml.setLevel('info')
+      expect(ml.level).to.equal(40)
     })
   })
 

@@ -11,6 +11,16 @@ const INFO = 40
 const DEBUG = 50
 const ALL = Infinity
 
+const levels = {
+  off: 0,
+  fatal: 10,
+  error: 20,
+  warn: 30,
+  info: 40,
+  debug: 50,
+  all: Infinity
+}
+
 const MongoLog = require('./log.js');
 
 class MongoLogger {
@@ -48,6 +58,8 @@ class MongoLogger {
     } else {
       this.level = ALL;
     }
+
+    this.levels = levels
   }
 
   /**
@@ -72,6 +84,8 @@ class MongoLogger {
   setLevel(level) {
     if (typeof level === 'number') {
       this.level = level;
+    } else if (typeof level === 'string' && typeof this.levels[level] === 'number') {
+      this.level = this.levels[level];
     } else {
       throw new TypeError(`Invalid argument: ${level}`);
     }
