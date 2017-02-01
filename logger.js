@@ -16,15 +16,26 @@ const MongoLog = require('./log.js');
 class MongoLogger {
   /**
    * Creates a MongoLogger Object with a provided monk collection object
-   * @param Monk Object connected to a collection
+   * @param Monk Collection Object or Monk Object or String
+   * @param optional String name of collection to connect to
    * @param optional Number logger level
    * @returns MongoLogger Object
    */
-  constructor(db, namespace, level) {
+  constructor(db, collection, level) {
     if (db instanceof monk) {
-      this.db = db.get(namespace);
-    } else if(typeof db === 'string') {
-      this.db = monk(db).get(namespace);
+      if (typeof collection === 'string') {
+        this.db = db.get(collection);
+      } else {
+        throw new TypeError(`Invalid argument ${collection}`);
+      }
+    } else if (typeof db === 'object' && typeof db.insert === 'function') {
+      this.db = db;
+    } else if (typeof db === 'string') {
+      if (typeof collection === 'string') {
+        this.db = monk(db).get(collection);
+      } else {
+        throw new TypeError(`Invalid argument ${collection}`)
+      }
     } else {
       throw new TypeError(`Invalid argument: ${db}`)
     }

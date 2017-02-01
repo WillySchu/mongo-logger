@@ -1,6 +1,7 @@
 'use strict';
 
 const expect = require('chai').expect;
+const monk = require('monk')('localhost');
 const MongoLogger = require('../logger.js');
 
 describe('MongoLogger', () => {
@@ -10,29 +11,30 @@ describe('MongoLogger', () => {
     })
 
     it('will throw errors if supplied incorrect arguments', () => {
-      expect(() => {new MongoLogger('yoyo')}).to.throw(TypeError);
+      expect(() => {new MongoLogger(false)}).to.throw(TypeError);
     })
 
     it('will set the correct values', () => {
-      const ml = new MongoLogger({a: 'a'}, 50);
-      expect(ml.db).to.deep.equal({a: 'a'});
+      const ml = new MongoLogger(monk, 'logs', 50);
+      expect(ml.db).to.deep.equal(monk.get('logs'));
       expect(ml.level).to.equal(50);
 
-      const ml2 = new MongoLogger({a: 's'});
-      expect(ml2.db).to.deep.equal({a: 's'});
+      const ml2 = new MongoLogger(monk, 's');
+      expect(ml2.db).to.deep.equal(monk.get('s'));
       expect(ml2.level).to.deep.equal(30);
     })
   })
 
   describe('setLevel method', () => {
     it('will throw an error if the wrong argument is passed', () => {
-      const ml = new MongoLogger({});
+      const ml = new MongoLogger(monk, 's');
       expect(() => {ml.setLevel()}).to.throw(TypeError);
-      expect(() => {ml.setLevel('asdf')}).to.throw(TypeError);
+      expect(() => {ml.setLevel(monk)}).to.throw(TypeError);
+      expect(() => {ml.setLevel(monk, false)}).to.throw(TypeError);
     })
 
     it('will change the level', () => {
-      const ml = new MongoLogger({});
+      const ml = new MongoLogger(monk, 'logs');
       expect(ml.level).to.equal(30);
       ml.setLevel(50);
       expect(ml.level).to.equal(50);
