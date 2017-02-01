@@ -55,7 +55,7 @@ describe('MongoLogger', () => {
       ml.l('hello', 50);
     })
 
-    it('will correctl attempt to log an object input', (done) => {
+    it('will correctly attempt to log an object input', (done) => {
       const db ={};
       db.insert = obj => {
         return new Promise((resolve, reject) => {
