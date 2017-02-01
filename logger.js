@@ -22,14 +22,17 @@ class MongoLogger {
    * @returns MongoLogger Object
    */
   constructor(db, collection, level) {
+    // Check for monk object and collection string
     if (db instanceof monk) {
       if (typeof collection === 'string') {
         this.db = db.get(collection);
       } else {
         throw new TypeError(`Invalid argument ${collection}`);
       }
+    // Check for monk collection (or any other object with an insert method)
     } else if (typeof db === 'object' && typeof db.insert === 'function') {
       this.db = db;
+    // Check for database uri and collection string
     } else if (typeof db === 'string') {
       if (typeof collection === 'string') {
         this.db = monk(db).get(collection);
