@@ -1,5 +1,7 @@
 'use strict';
 
+const DEFAULT_LOG_LEVEL = 30;
+
 class MongoLog {
   /**
    * Creates a MongoLog Object that takes either a string or an object.
@@ -33,7 +35,7 @@ class MongoLog {
     if (typeof level === 'number') {
       this.level = level;
     } else {
-      this.level = 30;
+      this.level = DEFAULT_LOG_LEVEL;
     }
 
     this.timestamp = new Date();
