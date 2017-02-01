@@ -45,5 +45,38 @@ The MongoLogger object has a level property that can be changed to control which
 
 ```js
 var MongoLogger = require('mongo-logger');
-var log = new MongoLogger('localhost', 'logs', )
+var log = new MongoLogger('localhost', 'logs', 'info')
+```
+
+In this case these logs will be saved to mongo:
+
+```js
+log.info('Some stuff here');
+log.warn('Something fishy here');
+```
+
+But this will not:
+
+```js
+log.debug('Some debug log');
+```
+
+The log level can be changed after instantiation by use of the setLevel method:
+
+```js
+log.setLevel('error');
+```
+
+Now these will be saved in mongo:
+
+```js
+log.error('SOMETHING IS WRONG!');
+log.fatal('AAAAAAHHH!');
+```
+
+But these will not:
+
+```js
+log.warn('Uh oh');
+log.info('Something informative');
 ```
