@@ -33,7 +33,7 @@ class MongoLog {
     if (typeof level === 'number') {
       this.level = level;
     } else {
-      this.level = 1;
+      this.level = 30;
     }
 
     this.timestamp = new Date();

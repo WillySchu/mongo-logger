@@ -1,4 +1,6 @@
-expect = require('chai').expect;
+'use strict';
+
+const expect = require('chai').expect;
 const MongoLog = require('../log.js');
 
 describe('MongoLog', () => {
@@ -12,14 +14,14 @@ describe('MongoLog', () => {
     })
 
     it('will have the correct values with string log', () => {
-      ml = new MongoLog({a: 'a'}, 'log', 40)
+      const ml = new MongoLog({a: 'a'}, 'log', 40)
       expect(ml.db).to.deep.equal({a: 'a'});
       expect(ml.message).to.equal('log');
       expect(ml.level).to.equal(40);
     })
 
     it('will have the correct values with object log', () => {
-      ml = new MongoLog({a: 'b'}, {m: 'hello', l: 'goodbye'}, 25);
+      const ml = new MongoLog({a: 'b'}, {m: 'hello', l: 'goodbye'}, 25);
       expect(ml.db).to.deep.equal({a: 'b'});
       expect(ml.m).to.equal('hello');
       expect(ml.l).to.equal('goodbye');
@@ -34,26 +36,26 @@ describe('MongoLog', () => {
 
   describe('saving', () => {
     it('will correctly call the db.insert function on save', (done) => {
-      db = {};
+      const db = {};
       db.insert = obj => {
         return new Promise((resolve, reject) => {
           const ret = JSON.parse(JSON.stringify(obj));
           expect(ret.db).to.equal(undefined);
           expect(ret.message).to.equal('hello');
-          expect(ret.level).to.equal(1);
+          expect(ret.level).to.equal(30);
           done();
         })
       }
-      ml = new MongoLog(db, 'hello');
+      const ml = new MongoLog(db, 'hello');
       ml.save().finally(done);
     })
   })
 
   describe('getObj method', () => {
     it('will return the correct object', () => {
-      ml = new MongoLog({}, 'hello');
+      const ml = new MongoLog({}, 'hello');
       const obj = ml.getObj();
-      expect(obj.level).to.equal(1);
+      expect(obj.level).to.equal(30);
       expect(obj.message).to.equal('hello');
       expect(obj.db).to.equal(undefined);
     })
