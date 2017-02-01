@@ -41,4 +41,9 @@ log.error('SOMETHING HAS GONE HORRIBLY WRONG!');
 
 ### Advanced
 
-The MongoLogger object has a level property that can be changed to control which logs are saved to mongo. By default this is set to all.
+The MongoLogger object has a level property that can be changed to control which logs are saved to mongo. By default this is set to all. The MongoLogger class constructor can take a third parameter that changes the default logging level upon instantiation.
+
+```js
+var MongoLogger = require('mongo-logger');
+var log = new MongoLogger('localhost', 'logs', )
+```

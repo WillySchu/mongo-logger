@@ -38,7 +38,7 @@ describe('MongoLogger', () => {
       ml.setLevel(50);
       expect(ml.level).to.equal(50);
       ml.setLevel('info')
-      expect(ml.level).to.equal(40)
+      expect(ml.level).to.equal(40);
     })
   })
 

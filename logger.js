@@ -55,11 +55,13 @@ class MongoLogger {
 
     if (typeof level === 'number') {
       this.level = level;
+    } else if (typeof levels[level] === 'number') {
+      this.level = levels[level];
     } else {
       this.level = ALL;
     }
 
-    this.levels = levels
+    this.levels = levels;
   }
 
   /**
