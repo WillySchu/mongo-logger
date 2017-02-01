@@ -10,6 +10,8 @@ $ npm install mongo-logger
 ```
 ## Documentation
 
+### Quick Start
+
 ```js
 var MongoLogger = require('mongo-logger');
 ```
@@ -36,3 +38,5 @@ log.debug('Some stuff here');
 
 log.error('SOMETHING HAS GONE HORRIBLY WRONG!');
 ```
+
+### Advanced

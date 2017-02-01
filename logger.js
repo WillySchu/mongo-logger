@@ -43,7 +43,7 @@ class MongoLogger {
     if (typeof level === 'number') {
       this.level = level;
     } else {
-      this.level = WARN;
+      this.level = ALL;
     }
   }
 

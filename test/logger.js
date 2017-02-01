@@ -21,7 +21,7 @@ describe('MongoLogger', () => {
 
       const ml2 = new MongoLogger(monk, 's');
       expect(ml2.db).to.deep.equal(monk.get('s'));
-      expect(ml2.level).to.deep.equal(30);
+      expect(ml2.level).to.deep.equal(Infinity);
     })
   })
 
@@ -35,7 +35,7 @@ describe('MongoLogger', () => {
 
     it('will change the level', () => {
       const ml = new MongoLogger(monk, 'logs');
-      expect(ml.level).to.equal(30);
+      expect(ml.level).to.equal(Infinity);
       ml.setLevel(50);
       expect(ml.level).to.equal(50);
     })
