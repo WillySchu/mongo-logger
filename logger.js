@@ -1,5 +1,7 @@
 'use strict';
 
+const monk = require('monk');
+
 // default available logging levels
 const OFF = 0
 const FATAL = 10
@@ -18,9 +20,11 @@ class MongoLogger {
    * @param optional Number logger level
    * @returns MongoLogger Object
    */
-  constructor(db, level) {
-    if (typeof db === 'object') {
-      this.db = db;
+  constructor(db, namespace, level) {
+    if (db instanceof monk) {
+      this.db = db.get(namespace);
+    } else if(typeof db === 'string') {
+      this.db = monk(db).get(namespace);
     } else {
       throw new TypeError(`Invalid argument: ${db}`)
     }

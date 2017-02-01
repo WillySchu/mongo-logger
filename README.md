@@ -14,18 +14,25 @@ $ npm install mongo-logger
 var MongoLogger = require('mongo-logger');
 ```
 
-The MongoLogger constructor takes a valid monk collection, for instance:
+The MongoLogger constructor can take a valid monk collection, for instance:
 
 ```js
 monk = require('monk');
 db = monk('http://url.here/');
-db.get('logs');
+
+var log = new MongoLogger(db, 'logs');
 ```
 
-Then you can instantiate a new MongoLogger instance:
+Or it can simply take a URI to connect to, for instance:
 
 ```js
-var log = new MongoLogger(db);
+var log = new MongoLogger('http://url.here/', 'logs');
+```
 
-log.error('SOMETHING HAS GONE HORRIBLY WRONG!')
+Now you can log to mongo!
+
+```js
+log.debug('Some stuff here');
+
+log.error('SOMETHING HAS GONE HORRIBLY WRONG!');
 ```
