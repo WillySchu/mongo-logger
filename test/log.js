@@ -35,7 +35,7 @@ describe('MongoLog', () => {
   describe('saving', () => {
     it('will correctly call the db.insert function on save', (done) => {
       db = {};
-      db.insert = function(obj) {
+      db.insert = obj => {
         return new Promise((resolve, reject) => {
           const ret = JSON.parse(JSON.stringify(obj));
           expect(ret.db).to.equal(undefined);

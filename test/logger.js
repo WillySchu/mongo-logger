@@ -38,7 +38,19 @@ describe('MongoLogger', () => {
   })
 
   describe('l method', () => {
-    // @TODO
+    it('will correctly attempt to log a string input', (done) => {
+      db = {};
+      db.insert = obj => {
+        return new Promise((resolve, reject) => {
+          const ret = JSON.parse(JSON.stringify(obj));
+          expect(ret.db).to.equal(undefined);
+          expect(ret.message).to.equal('hell')
+          done();
+        })
+      }
+      ml = new MongoLogger(db);
+      ml.l('hello')
+    })
   })
 
   describe('debug method', () => {
