@@ -65,7 +65,7 @@ describe('MongoLogger', () => {
           expect(ret.a).to.equal('a');
           expect(ret.b).to.equal(true);
           expect(ret.level).to.equal(40);
-          done()
+          done();
         }).catch(done)
       }
       const ml = new MongoLogger(db);
