@@ -22,6 +22,10 @@ describe('MongoLogger', () => {
       const ml2 = new MongoLogger(monk, 's');
       expect(ml2.db).to.deep.equal(monk.get('s'));
       expect(ml2.level).to.deep.equal(Infinity);
+
+      const ml3 = new MongoLogger(monk.get('logs'), 'asdf', 'debug');
+      expect(ml3.db).to.deep.equal(monk.get('logs'));
+      expect(ml3.level).to.deep.equal(50);
     })
   })
 
