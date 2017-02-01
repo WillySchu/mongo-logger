@@ -91,16 +91,6 @@ class MongoLogger {
   }
 
   /**
-   * Logs to mongo if logger level is at or above warn
-   * @param String or Object value(s) to be logged
-   */
-  warn(val) {
-    if (this.level >= WARN) {
-      this.l(val, WARN)
-    }
-  }
-
-  /**
    * Logs to mongo if logger level is at or above error
    * @param String or Object value(s) to be logged
    */

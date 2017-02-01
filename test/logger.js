@@ -36,4 +36,28 @@ describe('MongoLogger', () => {
       expect(ml.level).to.equal(50);
     })
   })
+
+  describe('l method', () => {
+    // @TODO
+  })
+
+  describe('debug method', () => {
+    // @TODO
+  })
+
+  describe('info method', () => {
+    // @TODO
+  })
+
+  describe('warn method', () => {
+    // @TODO
+  })
+
+  describe('error method', () => {
+    // @TODO
+  })
+
+  describe('fatal method', () => {
+    // @TODO
+  })
 })
